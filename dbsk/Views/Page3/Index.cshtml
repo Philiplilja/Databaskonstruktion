@@ -1,0 +1,25 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewBag.Title = "Page3";
+}
+
+<h2>Find student</h2>
+<form method="post" action="@Url.Action("SearchStudents", "Page3")">
+    <label>
+        Name:
+        <input type="text" name="name" value="" placeholder="Student name" />
+    </label>
+    <label>
+        Study program:
+        <select name="studyProgram">
+            @foreach (var dr in ViewBag.AllStudyProgramsTable.Rows)
+            {
+                <option value="@dr["RaceName"]">@dr["RaceName"]</option>
+            }
+        </select>
+    </label>
+    <input type="submit" value="Search" />
+</form>
+@Html.ActionLink("Back to home", "Index", "Home")

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section PageHeader {
+    <h2>Home</h2>
+}
+
+<p>@ViewBag.SomeText</p>
+
+@Html.ActionLink("List of aliens", "Index", "Page2")
+@Html.ActionLink("Search", "Index", "Page3")
+@Html.ActionLink("Delete", "Index", "Page4")
+@Html.ActionLink("Insert", "Index", "Page5")
+@Html.ActionLink("Update Danger", "Index", "Page6")

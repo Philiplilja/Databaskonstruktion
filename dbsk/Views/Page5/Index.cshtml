@@ -1,0 +1,47 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewBag.Title = "Page5";
+}
+
+<h2>Insert aliens</h2>
+
+<form method="post" action="@Url.Action("InsertAlien", "Page5")">
+    <label>
+        Alien ID:
+        <input type="text" name="ID" value="" placeholder="Insert ID.." />
+        Alien Race:
+        <input type="text" name="RaceName" value="" placeholder="Insert Race.." />
+        Alien Color:
+        <input type="text" name="Color" value="" placeholder="Insert color.." />
+        Danger:
+        <select name="Danger">
+            @foreach (var dr in ViewBag.DangerTable.Rows)
+            {
+                <option value="@dr["DangerCode"]">@dr["DangerName"]</option>
+            }
+        </select>
+    </label>
+    <input type="submit" value="Insert" />
+</form>
+
+
+    <table border ="1">
+        <tr>
+            @foreach (DataColumn dataColumn in Model.Columns)
+            {
+                <th>@dataColumn.ColumnName</th>
+            }
+        </tr>
+        @foreach (DataRow studyProgramRow in Model.Rows)
+        {
+            <tr>
+                @for (int i = 0; i < Model.Columns.Count; ++i)
+                {
+                    <td>@studyProgramRow[i]</td>
+                }
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Back to home", "Index", "Home")

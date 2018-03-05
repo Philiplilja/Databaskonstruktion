@@ -1,0 +1,31 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewBag.Title = "Page4";
+}
+
+<h2>Delete</h2>
+<table border ="1">
+    <tr>
+        @foreach (DataColumn dataColumn in Model.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (DataRow studyProgramRow in Model.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < Model.Columns.Count; ++i)
+            {
+                <td>@studyProgramRow[i]</td>
+            }
+            <td>
+                @Html.ActionLink("Delete", "DeleteAlien", 
+                    new { ID = studyProgramRow["ID"],RaceName = studyProgramRow["RaceName"] },
+                    new { title = "Click to delete Alien " + studyProgramRow["ID"] })
+            </td>
+            </tr>
+        }
+    </table>
+@Html.ActionLink("Back to home", "Index", "Home")
